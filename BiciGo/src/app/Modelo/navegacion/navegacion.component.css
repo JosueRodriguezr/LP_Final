@@ -1,0 +1,19 @@
+/* Estilos para la barra de navegación */
+mat-toolbar {
+    background-color: #1976D2; /* Color de fondo de la barra de navegación */
+    color: white; /* Color de texto en la barra de navegación */
+    font-size: 20px; /* Tamaño de fuente del texto en la barra de navegación */
+    padding: 16px; /* Espaciado interior de la barra de navegación */
+  }
+  
+  /* Estilos para los botones en la barra de navegación */
+  button.mat-button {
+    color: white; /* Color de texto en los botones */
+  }
+  
+  /* Estilos para el nombre de la aplicación */
+  span {
+    font-weight: bold; /* Fuente en negrita para el nombre de la aplicación */
+    margin-right: 16px; /* Espaciado derecho entre el nombre de la aplicación y los botones */
+  }
+  
