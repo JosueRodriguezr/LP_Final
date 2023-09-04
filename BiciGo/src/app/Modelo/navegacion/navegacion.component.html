@@ -2,8 +2,14 @@
     <span>BiciGo</span>
     <button mat-button routerLink="/login">Inicio</button>
     <button mat-button routerLink="/feed">Feed</button>
-    <button mat-button routerLink="/rutas">Rutas</button>
-    <button mat-button routerLink="/login">Info</button>
-
+  
+    <!-- Botón "Rutas" con menú desplegable -->
+    <button mat-button [matMenuTriggerFor]="menu">Rutas</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/rutas">Opción 1</button>
+    <button mat-menu-item routerLink="/login">Opción 2</button>
+    <button mat-menu-item routerLink="/login">Opción 3</button>
+  </mat-menu>
+    <button mat-button routerLink="/info">Info</button>
   </mat-toolbar>
   
