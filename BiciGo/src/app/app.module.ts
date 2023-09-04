@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select'; // Importa MatSelectModule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FiltroSideComponent } from './Modelo/filtro-side/filtro-side.component';
+import { CrearRutaComponent } from './crear-ruta/crear-ruta.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FiltroSideComponent } from './Modelo/filtro-side/filtro-side.component'
     FeedComponent,
     RutasComponent,
     FiltroSideComponent,
+    CrearRutaComponent,
   ],
   imports: [
     BrowserModule,
