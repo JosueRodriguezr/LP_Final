@@ -1,5 +1,5 @@
 /* Estilos para la barra de navegación */
-mat-toolbar {
+mat-toolbar mat-menu {
     background-color: #1976D2; /* Color de fondo de la barra de navegación */
     color: white; /* Color de texto en la barra de navegación */
     font-size: 20px; /* Tamaño de fuente del texto en la barra de navegación */
@@ -7,7 +7,7 @@ mat-toolbar {
   }
   
   /* Estilos para los botones en la barra de navegación */
-  button.mat-button {
+  button.mat-button button.mat-menu-item {
     color: white; /* Color de texto en los botones */
   }
   

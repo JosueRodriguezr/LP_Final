@@ -8,21 +8,28 @@ import * as L from 'leaflet';
 })
 export class RutasComponent implements OnInit {
   private map: any;
+  public puntoInicial: L.LatLng = L.latLng(-2.2058400, -79.9079500); // Coordenadas iniciales como LatLng
+  public puntoFinal: L.LatLng = L.latLng(-2.191826, -79.94042); // Coordenadas finales como LatLng
 
   constructor() {}
 
   ngOnInit() {
     // Crear un mapa Leaflet en el elemento con el ID 'map'
-    this.map = L.map('map').setView([51.505, -0.09], 13); // Coordenadas iniciales y nivel de zoom
+    this.map = L.map('map').setView([-2.2058400, -79.9079500], 13); // Coordenadas iniciales y nivel de zoom
 
     // Agregar un mapa base (puedes usar otros mapas base como OpenStreetMap, Mapbox, etc.)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
 
+    // Coordenadas del punto inicial y final
+   
+    // Trazar una línea entre el punto inicial y el punto final
+    const line = L.polyline([this.puntoInicial, this.puntoFinal], { color: 'red' }).addTo(this.map);
+
     // Crear un array de coordenadas para los restaurantes
     const restaurantes = [
-      { lat: 51.5, lon: -0.09, nombre: 'Restaurante A' },
+      { lat:  -2.191826, lon: -79.940427, nombre: 'Punto De Salida A' },
       { lat: 51.51, lon: -0.1, nombre: 'Restaurante B' },
       { lat: 51.52, lon: -0.11, nombre: 'Restaurante C' }
       // Agrega más coordenadas y nombres de restaurantes según sea necesario
@@ -39,5 +46,10 @@ export class RutasComponent implements OnInit {
       const marker = L.marker([restaurante.lat, restaurante.lon], { icon }).addTo(this.map);
       marker.bindPopup(`<b>${restaurante.nombre}</b>`); // Agregar un popup con el nombre del restaurante
     });
+  }
+  onFilterChange(event: any) {
+    const selectedValue = event.value; // Obtén el valor seleccionado en el filtro
+    // Realiza las acciones necesarias en respuesta al cambio de selección, por ejemplo:
+    console.log(`Seleccionaste la opción ${selectedValue}`);
   }
 }

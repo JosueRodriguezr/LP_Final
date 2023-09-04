@@ -1,0 +1,9 @@
+/* Estilo para app-filtro-side */
+app-filtro-side {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2; /* Un valor alto de z-index para que se muestre encima del mapa */
+    /* Otros estilos para app-filtro-side */
+  }
+  

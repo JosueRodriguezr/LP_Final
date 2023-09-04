@@ -33,7 +33,7 @@ export class FeedComponent implements OnInit {
         postId: i,
         title: `Mi post número ${i}`,
         body: `Este es el contenido de mi post número ${i}. ¡Espero que les guste!`,
-        photoUrl: `https://ejemplo.com/ruta-a-la-imagen${i}.jpg`,
+        photoUrl: 'https://espaibiciolot.es/wp-content/uploads/2021/03/ebo-blog-adelgazar-con-bicicleta.jpg',
         user: {
           userId: 1000 + i,
           username: `nombre_usuario${i}`,
