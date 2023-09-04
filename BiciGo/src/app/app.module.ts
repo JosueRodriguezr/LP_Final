@@ -14,6 +14,11 @@ import {MatCardModule} from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select'; // Importa MatSelectModule
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FiltroSideComponent } from './Modelo/filtro-side/filtro-side.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     NavegacionComponent,
     FeedComponent,
     RutasComponent,
+    FiltroSideComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +40,10 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     MatMenuModule,
     MatToolbarModule,
     LeafletModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
 
 
   ],

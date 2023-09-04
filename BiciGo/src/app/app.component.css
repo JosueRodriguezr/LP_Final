@@ -1,0 +1,12 @@
+.app-navegacion-container {
+    /* Establece la altura máxima que deseas para app-navegacion */
+    max-height: 60px; /* Ajusta la altura según tus necesidades */
+    overflow: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+  }
+  
+  .router-outlet-container {
+    /* Calcula la altura disponible restando la altura de app-navegacion */
+    height: calc(100vh - 60px); /* Ajusta la altura según la altura de app-navegacion */
+    overflow: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+  }
+  
