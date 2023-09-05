@@ -46,10 +46,6 @@ export class CrearRutaComponent {
       }
     );
   }
-<<<<<<< HEAD
-  
-}
-=======
 
   obtenerCoordenadasFin() {
     const apiUrl = 'http://localhost:3000/direccion?direccion=' + encodeURIComponent(this.direccionFin);
@@ -89,4 +85,3 @@ export class CrearRutaComponent {
       );
   }
 }
->>>>>>> bf3b1c71147e5e1824062630b368922e97f4b14a
