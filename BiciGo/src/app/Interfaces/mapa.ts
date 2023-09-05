@@ -1,4 +1,6 @@
 export interface mapa{
+    id: number;
+    nombre: string;
     PuntoPartida1: number
     PuntoFinal1: number
     PuntoPartida2: number
