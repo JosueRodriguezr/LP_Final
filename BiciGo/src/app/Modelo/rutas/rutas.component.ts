@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import { MapasService } from '../../Servicios/mapas.service';
+import { mapa } from '../../Interfaces/mapa';
 
 @Component({
   selector: 'app-rutas',
@@ -8,48 +10,75 @@ import * as L from 'leaflet';
 })
 export class RutasComponent implements OnInit {
   private map: any;
-  public puntoInicial: L.LatLng = L.latLng(-2.2058400, -79.9079500); // Coordenadas iniciales como LatLng
-  public puntoFinal: L.LatLng = L.latLng(-2.191826, -79.94042); // Coordenadas finales como LatLng
+  public puntoInicial: L.LatLng = L.latLng(-2.2058400, -79.9079500);
+  public puntoFinal: L.LatLng = L.latLng(-2.191826, -79.94042);
+  public data1: mapa[] = [];
 
-  constructor() {}
+  constructor(private mapaService: MapasService) {}
 
   ngOnInit() {
-    // Crear un mapa Leaflet en el elemento con el ID 'map'
-    this.map = L.map('map').setView([-2.2058400, -79.9079500], 13); // Coordenadas iniciales y nivel de zoom
+    this.mapaService.getResponse().subscribe((response) => {
+      this.data1 = response as mapa[]; // Asigna directamente la respuesta a data1
+      this.crearMapa(); // Llama a la función que crea el mapa
+    });
+  }
 
-    // Agregar un mapa base (puedes usar otros mapas base como OpenStreetMap, Mapbox, etc.)
+  // Mueve la creación del mapa a una función aparte
+  private crearMapa() {
+    this.map = L.map('map').setView([-2.2058400, -79.9079500], 13);
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
 
-    // Coordenadas del punto inicial y final
-   
-    // Trazar una línea entre el punto inicial y el punto final
-    const line = L.polyline([this.puntoInicial, this.puntoFinal], { color: 'red' }).addTo(this.map);
-
-    // Crear un array de coordenadas para los restaurantes
-    const restaurantes = [
-      { lat:  -2.191826, lon: -79.940427, nombre: 'Punto De Salida A' },
-      { lat: 51.51, lon: -0.1, nombre: 'Restaurante B' },
-      { lat: 51.52, lon: -0.11, nombre: 'Restaurante C' }
-      // Agrega más coordenadas y nombres de restaurantes según sea necesario
-    ];
-
-    // Itera sobre los datos de los restaurantes y agrega marcadores al mapa con un ícono de comida
+  
+    
+    const restaurantes = this.data1.map((objeto) => ({
+      lat: objeto.PuntoPartida1,
+      lon: objeto.PuntoFinal1,
+      nombre: objeto.NombrePuntoPartida
+    }));
+    
+    const restaurantes1 = this.data1.map((objeto) => ({
+      lat: objeto.PuntoPartida2,
+      lon: objeto.PuntoFinal2,
+      nombre: objeto.NombrePuntoFinal // Corregir NombrePuntoPartida a NombrePuntoFinal
+    }));
+    
+    this.data1.forEach(restaurante => {
+      const coordenadasLinea = [
+        L.latLng(restaurante.PuntoPartida1, restaurante.PuntoFinal1),
+        L.latLng(restaurante.PuntoPartida2, restaurante.PuntoFinal2)
+      ];
+    
+      const line = L.polyline(coordenadasLinea, { color: 'red' }).addTo(this.map);
+    });
+    
     restaurantes.forEach(restaurante => {
       const icon = L.icon({
-        iconUrl: 'https://th.bing.com/th/id/R.051626c468c61ced9731f0dea8b46d17?rik=suHYXjWshKVnWw&riu=http%3a%2f%2fyouvalencia.com%2fwp-content%2fuploads%2f2016%2f09%2fHamburguesa-002.jpg&ehk=cUXcQV7ab87%2fJiWVR889Mc7SllKhHeXtG1y6K0xoSoo%3d&risl=&pid=ImgRaw&r=0', // Ruta a un ícono de comida personalizado
+        iconUrl: 'https://cdn-icons-png.flaticon.com/256/5265/5265109.png',
         iconSize: [32, 32],
         iconAnchor: [16, 32]
       });
 
       const marker = L.marker([restaurante.lat, restaurante.lon], { icon }).addTo(this.map);
-      marker.bindPopup(`<b>${restaurante.nombre}</b>`); // Agregar un popup con el nombre del restaurante
+      marker.bindPopup(`<b>${restaurante.nombre}</b>`);
+    });
+
+    restaurantes1.forEach(restaurante => {
+      const icon = L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/256/5265/5265109.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 32]
+      });
+
+      const marker = L.marker([restaurante.lat, restaurante.lon], { icon }).addTo(this.map);
+      marker.bindPopup(`<b>${restaurante.nombre}</b>`);
     });
   }
+
   onFilterChange(event: any) {
-    const selectedValue = event.value; // Obtén el valor seleccionado en el filtro
-    // Realiza las acciones necesarias en respuesta al cambio de selección, por ejemplo:
+    const selectedValue = event.value;
     console.log(`Seleccionaste la opción ${selectedValue}`);
   }
 }

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
+import {usuarios} from '../Interfaces/usuarios'
+import {AuthenticationService} from '../Servicios/authentication.service'
+import { Router } from '@angular/router';
+import { SessionService } from '../Servicios/session.service';
 
 @Component({
   selector: 'app-login',
@@ -7,11 +10,27 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private authService: AuthService) { }
+  username: string = '';
+  password: string = '';
+  public data1: usuarios[] = [];
 
-  login(username: string, password: string) {
-    this.authService.login(username, password).subscribe((response) => {
-      // Maneja la respuesta de inicio de sesión aquí
+  constructor(private userService: AuthenticationService, private router: Router,private sessionService: SessionService) { }
+  ngOnInit() {
+    this.userService.getResponse().subscribe((response) => {
+      this.data1 = (response as usuarios[]);
     });
+  }
+
+  onSubmit() {
+    const usuario = this.data1.find(user => user.nombre === this.username);
+
+    if (usuario && usuario.contrasena === this.password) {
+      this.router.navigate(['/profile'], { state: { usuario } });
+        this.sessionService.setGlobalElement(usuario);
+    } else {
+      window.alert('Usuario no válido. Verifica tu nombre de usuario y contraseña.');
+
+
+    }
   }
 }

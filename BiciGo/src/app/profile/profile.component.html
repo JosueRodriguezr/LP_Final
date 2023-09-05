@@ -8,9 +8,11 @@
 <body>
     <div class="profile-container">
         <img src="ruta-a-tu-imagen-de-perfil.jpg" alt="Imagen de perfil">
-        <h1>Nombre de Usuario</h1>
-        <p>Correo Electrónico: usuario@example.com</p>
+        <h1>{{ data1[0].nombre }}</h1>
+        <p>Rol: {{ data1[0].tipo_usuario}}</p>
         <button class="logout-button">Cerrar Sesión</button>
     </div>
 </body>
 </html>
+
+

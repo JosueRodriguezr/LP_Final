@@ -20,6 +20,8 @@ import { MatSelectModule } from '@angular/material/select'; // Importa MatSelect
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FiltroSideComponent } from './Modelo/filtro-side/filtro-side.component';
 import { CrearRutaComponent } from './crear-ruta/crear-ruta.component';
+import { FormsModule } from '@angular/forms';
+import { map } from 'rxjs/operators';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { CrearRutaComponent } from './crear-ruta/crear-ruta.component';
     MatInputModule,
     MatSelectModule,
     BrowserAnimationsModule,
+    FormsModule,
 
 
   ],
