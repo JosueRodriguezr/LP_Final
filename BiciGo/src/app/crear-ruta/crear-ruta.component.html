@@ -1,1 +1,43 @@
-<p>crear-ruta works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario crear ruta</title>
+</head>
+<body>
+    <h1>Crear ruta</h1>
+    <form action="" method="POST">
+        <label for="puntoInicio">Punto de Inicio:</label>
+        <select id="puntoInicio" name="puntoInicio" required>
+            <option value="" disabled selected>Selecciona un lugar</option>
+            <option value="quito">Quito</option>
+            <option value="guayaquil">Guayaquil</option>
+            <option value="cuenca">Cuenca</option>
+            <option value="manta">Manta</option>
+            <option value="baños">Baños</option>
+        </select>
+        <br>
+        <label for="puntoFin">Punto de Fin:</label>
+        <select id="puntoFin" name="puntoFin" required>
+            <option value="" disabled selected>Selecciona un lugar</option>
+            <option value="quito">Quito</option>
+            <option value="guayaquil">Guayaquil</option>
+            <option value="cuenca">Cuenca</option>
+            <option value="manta">Manta</option>
+            <option value="baños">Baños</option>
+        </select>
+        <br>
+        <label for="organizador">Organizada por:</label>
+        <select id="organizador" name="organizador" required>
+            <option value="" disabled selected>Seleccione el organizador</option>
+            <option value="nombre1">Peter Rodriguez</option>
+            <option value="nombre2">George Yaguana</option>
+            <option value="nombre3">Melanie Sandoval</option>
+        </select>
+        <br>
+        
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
