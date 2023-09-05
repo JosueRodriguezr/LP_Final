@@ -1,5 +1,7 @@
 export interface Post {
-  title: string;
-  content: string;
-  author: string;
+  postId: string
+  title: string
+  body: string
+  photoUrl: string
+  username: string
 }

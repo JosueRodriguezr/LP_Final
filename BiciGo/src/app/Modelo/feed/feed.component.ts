@@ -1,17 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface Post {
-  postId: number;
-  title: string;
-  body: string;
-  photoUrl: string;
-  user: {
-    userId: number;
-    username: string;
-    name: string;
-  };
-}
-
+import {Post} from '../../Interfaces/post'
+import {DatafeedService} from '../../Servicios/datafeed.service'
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
@@ -23,29 +12,19 @@ export class FeedComponent implements OnInit {
   public inicio: number = 0;
   public fin: number = 10;
 
-  
+  constructor(private dataService: DatafeedService) {}
+
 
   ngOnInit() {
-    this.data1 = [];
-
-    for (let i = 1; i <= 20; i++) {
-      const postData = {
-        postId: i,
-        title: `Mi post número ${i}`,
-        body: `Este es el contenido de mi post número ${i}. ¡Espero que les guste!`,
-        photoUrl: 'https://espaibiciolot.es/wp-content/uploads/2021/03/ebo-blog-adelgazar-con-bicicleta.jpg',
-        user: {
-          userId: 1000 + i,
-          username: `nombre_usuario${i}`,
-          name: `Nombre del Usuario ${i}`
-        }
-      };
-      this.data1.push(postData);
-    }
+    this.dataService.getResponse().subscribe((response) => {
+      this.data1 = response as Post[]; 
+      this.data2=this.data1.slice(this.inicio,this.fin);
+    });
+  }
     
-    this.data2=this.data1.slice(this.inicio,this.fin);
 
-}
+
+
 onClickButton(){
   if ( this.inicio +10  < this.data1.length){
     this.inicio +=10;

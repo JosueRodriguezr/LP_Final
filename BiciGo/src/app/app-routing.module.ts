@@ -10,7 +10,7 @@ import { RutasComponent  } from './Modelo/rutas/rutas.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/feed', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'rutas', component: RutasComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
