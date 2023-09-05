@@ -48,3 +48,18 @@ button.logout-button {
 button.logout-button:hover {
     background-color: #333; 
 }
+/* Estilos para la barra de navegación */
+
+  
+  /* Estilos para los botones en la barra de navegación */
+  button.mat-button button.mat-menu-item {
+    color: blue; /* Color de texto en los botones */
+    background-color: blue;
+  }
+  
+  /* Estilos para el nombre de la aplicación */
+  span {
+    font-weight: bold; /* Fuente en negrita para el nombre de la aplicación */
+    margin-right: 16px; /* Espaciado derecho entre el nombre de la aplicación y los botones */
+  }
+  

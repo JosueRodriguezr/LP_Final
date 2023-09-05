@@ -9,15 +9,13 @@ import { SessionService } from '../Servicios/session.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  public data1: usuarios[] = [];
+  public usuario: usuarios | null = null;
 
-  constructor(private sessionService: SessionService) { }
+  constructor(private sessionService: SessionService) { 
+    
+  }
 
   ngOnInit(): void {
-    const usuario = this.sessionService.getGlobalElement(); // Llama a la función para obtener el objeto usuarios
-    if (usuario) {
-      this.data1.push(usuario); // Agrega el objeto usuario al arreglo data1
-    }
-    
-}
+    this.usuario = this.sessionService.getGlobalElement();
+  }
 }

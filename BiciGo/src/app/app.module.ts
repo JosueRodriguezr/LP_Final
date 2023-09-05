@@ -22,6 +22,7 @@ import { FiltroSideComponent } from './Modelo/filtro-side/filtro-side.component'
 import { CrearRutaComponent } from './crear-ruta/crear-ruta.component';
 import { FormsModule } from '@angular/forms';
 import { map } from 'rxjs/operators';
+import { PostComponent } from './Modelo/post/post.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { map } from 'rxjs/operators';
     RutasComponent,
     FiltroSideComponent,
     CrearRutaComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,

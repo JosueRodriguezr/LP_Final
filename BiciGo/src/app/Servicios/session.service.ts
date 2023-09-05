@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
-import {usuarios} from '../../app/Interfaces/usuarios';
+import { BehaviorSubject } from 'rxjs';
+import { usuarios } from '../../app/Interfaces/usuarios';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
-  private globalElement: usuarios | undefined; // Elemento global
+  private globalElementKey = 'globalElement'; // Clave para almacenar el elemento en el almacenamiento local
 
   setGlobalElement(element: usuarios) {
-    this.globalElement = element;
+    localStorage.setItem(this.globalElementKey, JSON.stringify(element));
   }
 
-  getGlobalElement() {
-    return this.globalElement;
+  getGlobalElement(): usuarios | null {
+    const storedElement = localStorage.getItem(this.globalElementKey);
+    return storedElement ? JSON.parse(storedElement) : null;
+  }
+
+  clearGlobalElement() {
+    localStorage.removeItem(this.globalElementKey);
   }
 }
+
 
