@@ -7,27 +7,34 @@
 </head>
 <body>
     <h1>Crear ruta</h1>
-    <form action="" method="POST">
-        <label for="puntoInicio">Punto de Inicio:</label>
-        <select id="puntoInicio" name="puntoInicio" required>
-            <option value="" disabled selected>Selecciona un lugar</option>
-            <option value="quito">Quito</option>
-            <option value="guayaquil">Guayaquil</option>
-            <option value="cuenca">Cuenca</option>
-            <option value="manta">Manta</option>
-            <option value="baños">Baños</option>
-        </select>
+    <div class="formulario">
+        <div>
+            <label for="direccionInicio">Dirección de Inicio:</label>
+            <input type="text" id="direccionInicio" [(ngModel)]="direccionInicio" />
+            <div *ngIf="coordenadasInicio">
+                <p>Latitud (Inicio): {{ coordenadasInicio.lat }}</p>
+                <p>Longitud (Inicio): {{ coordenadasInicio.lng }}</p>
+            </div>
+            <div *ngIf="errorInicio">
+                <p>Error (Inicio): {{ errorInicio }}</p>
+            </div>
+        </div>
+
+        <div>
+            <label for="direccionFin">Dirección de Fin:</label>
+            <input type="text" id="direccionFin" [(ngModel)]="direccionFin" />
+            <div *ngIf="coordenadasFin">
+                <p>Latitud (Fin): {{ coordenadasFin.lat }}</p>
+                <p>Longitud (Fin): {{ coordenadasFin.lng }}</p>
+            </div>
+            <div *ngIf="errorFin">
+                <p>Error (Fin): {{ errorFin }}</p>
+            </div>
+        </div>
         <br>
-        <label for="puntoFin">Punto de Fin:</label>
-        <select id="puntoFin" name="puntoFin" required>
-            <option value="" disabled selected>Selecciona un lugar</option>
-            <option value="quito">Quito</option>
-            <option value="guayaquil">Guayaquil</option>
-            <option value="cuenca">Cuenca</option>
-            <option value="manta">Manta</option>
-            <option value="baños">Baños</option>
-        </select>
-        <br>
+        <button (click)="obtenerCoordenadas()">Obtener Coordenadas de Fin</button>
+    </div>
+    <form (submit)="onSubmit()" method="POST">
         <label for="organizador">Organizada por:</label>
         <select id="organizador" name="organizador" required>
             <option value="" disabled selected>Seleccione el organizador</option>
@@ -36,7 +43,6 @@
             <option value="nombre3">Melanie Sandoval</option>
         </select>
         <br>
-        
         <button type="submit">Enviar</button>
     </form>
 </body>
