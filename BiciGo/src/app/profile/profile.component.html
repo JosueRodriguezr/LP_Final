@@ -7,10 +7,11 @@
 </head>
 <body>
     <div class="profile-container">
-        <img src="ruta-a-tu-imagen-de-perfil.jpg" alt="Imagen de perfil">
-        <h1>{{ data1[0].nombre }}</h1>
-        <p>Rol: {{ data1[0].tipo_usuario}}</p>
-        <button class="logout-button">Cerrar Sesión</button>
+        <img src="https://cdn-icons-png.flaticon.com/512/4792/4792929.png" alt="Imagen de perfil">
+        <h1>{{ usuario?.nombre }}</h1>
+        <p>Rol: {{ usuario?.tipo_usuario}}</p>
+        <button mat-button routerLink="/login">Cerrar Sesion</button>
+
     </div>
 </body>
 </html>

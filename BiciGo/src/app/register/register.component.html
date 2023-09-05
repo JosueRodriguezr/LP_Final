@@ -5,7 +5,6 @@
     <label for="rol">Rol:</label>
     <select id="rol" [(ngModel)]="rol" name="rol" required>
         <option value="admin">Admin</option>
-        <option value="tienda">Tienda</option>
         <option value="normal">Normal</option>
     </select>
     <br>
@@ -14,8 +13,10 @@
     <br>
     <button type="submit">Registrar</button>
     <div *ngIf="mensajeExito" class="mensaje-exito">{{ mensajeExito }}</div>
+    <p>¿Tienes Cuenta? <a href="./login">Inicia Sesion Aqui aquí</a></p>
 
 </form>
+
 
 
 
