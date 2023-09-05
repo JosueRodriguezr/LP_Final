@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {mapa} from '../Interfaces/mapa'
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,40 @@ export class MapasService {
 
 
   private URL: string = 'http://localhost/apiMapa/get/';
+  private apiUrl: string = 'http://localhost/apiMapa/put/';
+  constructor(private http:HttpClient) { }
+
 
   getResponse() {
     return this.http.get(this.URL);
 }
-  constructor(private http:HttpClient) { }
+
+ agregarUsuario(
+  PuntoPartida1: number,
+  PuntoFinal1: number,
+  PuntoPartida2: number,
+  PuntoFinal2: number,
+  NombrePuntoPartida: string,
+  NombrePuntoFinal: string,
+  lider: string
+) {
+  const formData = new FormData();
+  formData.append('PuntoPartida1', PuntoPartida1.toString()); // Convertir a string
+  formData.append('PuntoFinal1', PuntoFinal1.toString()); // Convertir a string
+  formData.append('PuntoPartida2', PuntoPartida2.toString()); // Convertir a string
+  formData.append('PuntoFinal2', PuntoFinal2.toString()); // Convertir a string
+  formData.append('NombrePuntoPartida', NombrePuntoPartida);
+  formData.append('NombrePuntoFinal', NombrePuntoFinal);
+  formData.append('lider', lider);
+
+  const headers = new HttpHeaders();
+  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+  
+  return this.http.post(this.apiUrl, formData, { headers });
+}
 
 }
+
+
+
+

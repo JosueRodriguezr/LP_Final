@@ -23,4 +23,5 @@ export class CrearRutaComponent {
       this.data1 = (response as mapa[]);
     });
   }
+  
 }
