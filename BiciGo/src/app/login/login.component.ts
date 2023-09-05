@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {usuarios} from '../Interfaces/usuarios'
+import { usuarios } from '../Interfaces/usuarios'
 import {AuthenticationService} from '../Servicios/authentication.service'
 import { Router } from '@angular/router';
 import { SessionService } from '../Servicios/session.service';

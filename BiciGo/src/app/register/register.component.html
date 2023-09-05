@@ -13,6 +13,8 @@
     <input type="password" id="contrasena" [(ngModel)]="contrasena" name="contrasena" required>
     <br>
     <button type="submit">Registrar</button>
+    <div *ngIf="mensajeExito" class="mensaje-exito">{{ mensajeExito }}</div>
+
 </form>
 
 
